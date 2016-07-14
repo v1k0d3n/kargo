@@ -1,0 +1,3 @@
+---
+rkt_version: v1.10.1
+rkt_bin_dir: "{{ local_release_dir }}/rkt/rkt-{{ rkt_version }/"

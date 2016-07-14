@@ -1,8 +1,11 @@
 #!/bin/bash
-/usr/bin/docker run --privileged --rm \
+{% if kube_container_engine == "docker" %}
+/usr/bin/docker run --privileged --rem \
 --net=host -e ETCD_AUTHORITY=127.0.0.1:2379 \
 -v /usr/bin/docker:/usr/bin/docker \
 -v /var/run/docker.sock:/var/run/docker.sock \
 -v /var/run/calico:/var/run/calico \
 {{ calicoctl_image_repo }}:{{ calicoctl_image_tag}} \
 $@
+{% elif kube_container_engine == "rkt %}
+{% endif %}

@@ -1,0 +1,16 @@
+---
+- name: Copy rkt binary from downloaddir
+  command: rsync -piu "{{ rkt_bin_dir }}/rkt" "{{ bin_dir }}/rkt"
+  changed_when: false
+
+- name: Create rkt network config directory
+  file:
+    path: "{{ rkt_netconfig_dir }}"
+    state: directory
+    owner: root
+    recurse: yes
+
+- name: Configure flannel network plugin for rkt
+  template:
+    src: flannel_cni.conf
+    dest: "{{ rkt_netconfig_dir }}"
