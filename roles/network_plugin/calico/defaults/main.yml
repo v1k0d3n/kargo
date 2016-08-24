@@ -16,5 +16,5 @@ calico_node_image_tag: "{{ calico_version }}"
 
 # Set to true if your Hyperkube has all required components to run
 # calico. This is required in order to run canalized calico.
-use_hyperkube_cni: false
+use_hyperkube_cni: true
 
